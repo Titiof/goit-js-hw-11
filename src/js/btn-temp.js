@@ -42,7 +42,7 @@ async function onFormElSubmit(event) {
     
         return;
     }
-        
+
     if (pixabayApi.page === 1) {
         refs.galleryListEl.innerHTML = galleryTemplate(data.hits);
         simple.refresh();
@@ -70,7 +70,7 @@ async function onFormElSubmit(event) {
             behavior: "smooth",
         });
         
-        if (pixabayApi.page === Math.floor(data.totalHits / pixabayApi.per_page)) {
+        if (pixabayApi.page >= Math.floor(data.totalHits / pixabayApi.per_page)) {
             refs.loadMoreBtn.classList.add('is-hidden');
             Notiflix.Notify.info('Sorry, but you have reached the end of the search results');
         }
